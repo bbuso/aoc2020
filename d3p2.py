@@ -35,7 +35,7 @@ def get_trees( x_coord, y_coord, dataset  ):
 
 def load_file():
     try: 
-        return [line.rstrip() for line in open('d4.txt')]
+        return [line.rstrip() for line in open('garbage.txt')]
     except:
         print( "it's fucked mate")
 
