@@ -21,7 +21,7 @@ def getSeatId( encoded_seat):
     rowNum = 0
     for x in range(len(col)):
         if col[x]== "R":
-            colNum += 2**(2-x)
+            colNum += 2**(len(col)-x-1)
     for x in range(len(row)):
         if row[x]== "B":
             rowNum += 2**(len(row)-x-1)
