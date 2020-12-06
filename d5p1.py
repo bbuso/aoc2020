@@ -1,4 +1,3 @@
-import sys
 import re
 
 def main():
@@ -10,21 +9,16 @@ def main():
         seatId = getSeatId( x )
         seats[seatId] = x
     highest = max(seats.keys())
-    print( "max seat is " + str(highest) + "w / " + seats[highest])
+    print( "max seat is " + str(highest) + " w / " + seats[highest])
 
 
 def getSeatId( encoded_seat):
+    encoded_seat = re.sub("(R|B)", "1", encoded_seat)
+    encoded_seat = re.sub("(L|F)", "0", encoded_seat)
     row = encoded_seat[0:7]
     col = encoded_seat[7:10]
-
-    colNum = 0
-    rowNum = 0
-    for x in range(len(col)):
-        if col[x]== "R":
-            colNum += 2**(len(col)-x-1)
-    for x in range(len(row)):
-        if row[x]== "B":
-            rowNum += 2**(len(row)-x-1)
+    colNum = int(col, 2)
+    rowNum = int(row, 2)
 
     return(8*rowNum + colNum)
 def load_file():
