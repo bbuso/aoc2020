@@ -3,18 +3,17 @@ import math
 
 def main():
     permutations = 1
-    x = 0
-    y = 1
-    while x < len(dataset):
-        y = 1
-        if x + y == len(dataset):
+    row = 0
+    while row < len(dataset):
+        rows_ahead = 1
+        if row + rows_ahead == len(dataset):
             break
-        while dataset[x + y] - dataset[x] == y:
-            y += 1
-            if x + y == len(dataset):
+        while dataset[row + rows_ahead] - dataset[row] == rows_ahead:
+            rows_ahead += 1
+            if row + rows_ahead == len(dataset):
                 break
-        permutations *= math.comb(y - 1, 2) + 1
-        x += y
+        permutations *= math.comb(rows_ahead - 1, 2) + 1
+        row += rows_ahead
     print(permutations)
 
 
